@@ -1,0 +1,384 @@
+{
+  "flights": [
+    {
+      "id": "FL001",
+      "airline": "Air India",
+      "flightNumber": "AI101",
+      "departure": {
+        "airport": "MAA",
+        "time": "06:30"
+      },
+      "arrival": {
+        "airport": "DEL",
+        "time": "09:15"
+      },
+      "duration": "2h 45m",
+      "price": 8500,
+      "stops": 0,
+      "aircraft": "Airbus A320neo",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL002",
+      "airline": "IndiGo",
+      "flightNumber": "6E201",
+      "departure": {
+        "airport": "MAA",
+        "time": "05:45"
+      },
+      "arrival": {
+        "airport": "DEL",
+        "time": "08:35"
+      },
+      "duration": "2h 50m",
+      "price": 6200,
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL003",
+      "airline": "Akasa Air",
+      "flightNumber": "QP1320",
+      "departure": {
+        "airport": "MAA",
+        "time": "10:30"
+      },
+      "arrival": {
+        "airport": "DEL",
+        "time": "13:40"
+      },
+      "duration": "3h 10m",
+      "price": 5400,
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL004",
+      "airline": "Air India",
+      "flightNumber": "AI507",
+      "departure": {
+        "airport": "MAA",
+        "time": "14:00"
+      },
+      "arrival": {
+        "airport": "DEL",
+        "time": "16:50"
+      },
+      "duration": "2h 50m",
+      "price": 9200,
+      "stops": 0,
+      "aircraft": "Airbus A321neo",
+      "baggage": "20 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL005",
+      "airline": "IndiGo",
+      "flightNumber": "6E452",
+      "departure": {
+        "airport": "MAA",
+        "time": "12:20"
+      },
+      "arrival": {
+        "airport": "DEL",
+        "time": "17:05"
+      },
+      "duration": "4h 45m",
+      "price": 5100,
+      "stops": 1,
+      "aircraft": "Airbus A320",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL006",
+      "airline": "Akasa Air",
+      "flightNumber": "QP1456",
+      "departure": {
+        "airport": "MAA",
+        "time": "18:10"
+      },
+      "arrival": {
+        "airport": "DEL",
+        "time": "21:25"
+      },
+      "duration": "3h 15m",
+      "price": 5800,
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL007",
+      "airline": "Air India",
+      "flightNumber": "AI804",
+      "departure": {
+        "airport": "MAA",
+        "time": "07:20"
+      },
+      "arrival": {
+        "airport": "DEL",
+        "time": "12:15"
+      },
+      "duration": "4h 55m",
+      "price": 6700,
+      "stops": 1,
+      "aircraft": "Airbus A320",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL008",
+      "airline": "IndiGo",
+      "flightNumber": "6E789",
+      "departure": {
+        "airport": "MAA",
+        "time": "09:40"
+      },
+      "arrival": {
+        "airport": "DEL",
+        "time": "12:35"
+      },
+      "duration": "2h 55m",
+      "price": 7100,
+      "stops": 0,
+      "aircraft": "Airbus A321neo",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL009",
+      "airline": "Akasa Air",
+      "flightNumber": "QP1689",
+      "departure": {
+        "airport": "MAA",
+        "time": "15:25"
+      },
+      "arrival": {
+        "airport": "DEL",
+        "time": "18:40"
+      },
+      "duration": "3h 15m",
+      "price": 6300,
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL010",
+      "airline": "Air India",
+      "flightNumber": "AI671",
+      "departure": {
+        "airport": "MAA",
+        "time": "19:30"
+      },
+      "arrival": {
+        "airport": "DEL",
+        "time": "22:35"
+      },
+      "duration": "3h 05m",
+      "price": 10400,
+      "stops": 0,
+      "aircraft": "Airbus A320neo",
+      "baggage": "20 kg",
+      "cabinClass": "Premium Economy"
+    },
+    {
+      "id": "FL011",
+      "airline": "IndiGo",
+      "flightNumber": "6E501",
+      "departure": {
+        "airport": "MAA",
+        "time": "06:10"
+      },
+      "arrival": {
+        "airport": "BOM",
+        "time": "08:00"
+      },
+      "duration": "1h 50m",
+      "price": 4800,
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL012",
+      "airline": "Air India",
+      "flightNumber": "AI672",
+      "departure": {
+        "airport": "MAA",
+        "time": "09:15"
+      },
+      "arrival": {
+        "airport": "BOM",
+        "time": "11:10"
+      },
+      "duration": "1h 55m",
+      "price": 7200,
+      "stops": 0,
+      "aircraft": "Airbus A320neo",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL013",
+      "airline": "Akasa Air",
+      "flightNumber": "QP1102",
+      "departure": {
+        "airport": "MAA",
+        "time": "13:20"
+      },
+      "arrival": {
+        "airport": "BLR",
+        "time": "14:25"
+      },
+      "duration": "1h 05m",
+      "price": 3900,
+      "stops": 0,
+      "aircraft": "Boeing 737 MAX 8",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL014",
+      "airline": "IndiGo",
+      "flightNumber": "6E321",
+      "departure": {
+        "airport": "MAA",
+        "time": "16:15"
+      },
+      "arrival": {
+        "airport": "BLR",
+        "time": "17:20"
+      },
+      "duration": "1h 05m",
+      "price": 4200,
+      "stops": 0,
+      "aircraft": "Airbus A321",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL015",
+      "airline": "Air India",
+      "flightNumber": "AI542",
+      "departure": {
+        "airport": "MAA",
+        "time": "08:00"
+      },
+      "arrival": {
+        "airport": "HYD",
+        "time": "09:25"
+      },
+      "duration": "1h 25m",
+      "price": 4500,
+      "stops": 0,
+      "aircraft": "Airbus A320",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL016",
+      "airline": "IndiGo",
+      "flightNumber": "6E612",
+      "departure": {
+        "airport": "MAA",
+        "time": "17:45"
+      },
+      "arrival": {
+        "airport": "HYD",
+        "time": "19:10"
+      },
+      "duration": "1h 25m",
+      "price": 4100,
+      "stops": 0,
+      "aircraft": "Airbus A320neo",
+      "baggage": "15 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL017",
+      "airline": "Emirates",
+      "flightNumber": "EK543",
+      "departure": {
+        "airport": "MAA",
+        "time": "21:45"
+      },
+      "arrival": {
+        "airport": "DXB",
+        "time": "00:30"
+      },
+      "duration": "4h 15m",
+      "price": 28500,
+      "stops": 0,
+      "aircraft": "Boeing 777-300ER",
+      "baggage": "25 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL018",
+      "airline": "Emirates",
+      "flightNumber": "EK542",
+      "departure": {
+        "airport": "MAA",
+        "time": "04:20"
+      },
+      "arrival": {
+        "airport": "DXB",
+        "time": "07:05"
+      },
+      "duration": "4h 15m",
+      "price": 31200,
+      "stops": 0,
+      "aircraft": "Airbus A380",
+      "baggage": "30 kg",
+      "cabinClass": "Business"
+    },
+    {
+      "id": "FL019",
+      "airline": "Singapore Airlines",
+      "flightNumber": "SQ529",
+      "departure": {
+        "airport": "MAA",
+        "time": "23:15"
+      },
+      "arrival": {
+        "airport": "SIN",
+        "time": "06:30"
+      },
+      "duration": "4h 45m",
+      "price": 32000,
+      "stops": 0,
+      "aircraft": "Airbus A350",
+      "baggage": "25 kg",
+      "cabinClass": "Economy"
+    },
+    {
+      "id": "FL020",
+      "airline": "Singapore Airlines",
+      "flightNumber": "SQ528",
+      "departure": {
+        "airport": "MAA",
+        "time": "11:10"
+      },
+      "arrival": {
+        "airport": "SIN",
+        "time": "18:20"
+      },
+      "duration": "4h 40m",
+      "price": 48500,
+      "stops": 0,
+      "aircraft": "Boeing 787-10",
+      "baggage": "30 kg",
+      "cabinClass": "Business"
+    }
+  ]
+}

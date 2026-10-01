@@ -1,0 +1,13 @@
+<main>
+
+  <app-search
+    (search)="onSearch($event)"
+  />
+
+  @if (searchCriteria) {
+    <app-flight-results
+      [searchCriteria]="searchCriteria"
+    />
+  }
+
+</main>

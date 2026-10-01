@@ -1,0 +1,108 @@
+<article class="flight-card">
+
+  <div class="airline-section">
+
+    <div class="airline-logo">
+      {{ flight.airline.charAt(0) }}
+    </div>
+
+    <div class="airline-info">
+
+      <strong>
+        {{ flight.airline }}
+      </strong>
+
+      <span>
+        {{ flight.flightNumber }}
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="time-section">
+
+    <div class="time-block">
+
+      <strong>
+        {{ flight.departure.time }}
+      </strong>
+
+      <span>
+        {{ flight.departure.airport }}
+      </span>
+
+    </div>
+
+    <div class="flight-duration">
+
+      <span>
+        {{ flight.duration }}
+      </span>
+
+      <div class="flight-line">
+
+        <span class="line-dot"></span>
+
+        <span class="line"></span>
+
+        <span class="line-dot"></span>
+
+      </div>
+
+      <span class="stops">
+
+        @if (flight.stops === 0) {
+
+          Non-stop
+
+        } @else {
+
+          {{ flight.stops }}
+          {{ flight.stops === 1 ? 'Stop' : 'Stops' }}
+
+        }
+
+      </span>
+
+    </div>
+
+    <div class="time-block">
+
+      <strong>
+        {{ flight.arrival.time }}
+      </strong>
+
+      <span>
+        {{ flight.arrival.airport }}
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="price-section">
+
+    <span class="price-label">
+      From
+    </span>
+
+    <strong class="price">
+      ₹{{ flight.price | number }}
+    </strong>
+
+    <span class="price-note">
+      per passenger
+    </span>
+
+    <button
+      type="button"
+      (click)="onViewDetails()"
+    >
+      View Details
+      <span>→</span>
+    </button>
+
+  </div>
+
+</article>

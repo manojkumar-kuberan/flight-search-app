@@ -1,0 +1,338 @@
+<section class="results-container">
+
+  @if (searchCriteria) {
+
+    <div class="results-header">
+
+      <div class="route-summary">
+
+        <span class="results-label">
+          Available Flights
+        </span>
+
+        <div class="route-title">
+
+          <strong>
+            {{ searchCriteria.from }}
+          </strong>
+
+          <span class="route-arrow">
+            →
+          </span>
+
+          <strong>
+            {{ searchCriteria.to }}
+          </strong>
+
+        </div>
+
+        <p>
+          {{ searchCriteria.departureDate }}
+          ·
+          {{ searchCriteria.passengers }}
+          {{
+            searchCriteria.passengers === 1
+              ? 'Passenger'
+              : 'Passengers'
+          }}
+        </p>
+
+      </div>
+
+      <div class="route-badge">
+        Round Trip
+      </div>
+
+    </div>
+
+  }
+
+  @if (loading) {
+
+    <div class="state-container">
+
+      <div class="spinner"></div>
+
+      <h3>
+        Searching for flights
+      </h3>
+
+      <p>
+        Please wait while we find available flights.
+      </p>
+
+    </div>
+
+  }
+
+  @if (!loading && errorMessage) {
+
+    <div class="state-container error-state">
+
+      <div class="state-icon">
+        !
+      </div>
+
+      <h3>
+        Something went wrong
+      </h3>
+
+      <p>
+        {{ errorMessage }}
+      </p>
+
+      <button
+        type="button"
+        (click)="retry()"
+      >
+        Try Again
+      </button>
+
+    </div>
+
+  }
+
+  @if (!loading && !errorMessage) {
+
+    @if (
+      searchFlights$ | async;
+      as searchFlights
+    ) {
+
+      @if (searchFlights.length > 0) {
+
+        <div class="filter-container">
+
+          <div class="filter-header">
+
+            <div>
+              <strong>
+                Filter Results
+              </strong>
+
+              <span>
+                {{ searchFlights.length }}
+                available
+              </span>
+            </div>
+
+          </div>
+
+          <div class="filter-grid">
+
+            <div class="filter-field">
+
+              <label for="minPrice">
+                Minimum Price
+              </label>
+
+              <select
+                id="minPrice"
+                [value]="minPrice$.value"
+                (change)="onMinPriceChange($event)"
+              >
+
+                <option [value]="0">
+                  ₹0
+                </option>
+
+                <option [value]="5000">
+                  ₹5,000
+                </option>
+
+                <option [value]="10000">
+                  ₹10,000
+                </option>
+
+                <option [value]="15000">
+                  ₹15,000
+                </option>
+
+                <option [value]="20000">
+                  ₹20,000
+                </option>
+
+                <option [value]="30000">
+                  ₹30,000
+                </option>
+
+                <option [value]="40000">
+                  ₹40,000
+                </option>
+
+              </select>
+
+            </div>
+
+            <div class="filter-field">
+
+              <label for="maxPrice">
+                Maximum Price
+              </label>
+
+              <select
+                id="maxPrice"
+                [value]="maxPrice$.value"
+                (change)="onMaxPriceChange($event)"
+              >
+
+                <option [value]="10000">
+                  ₹10,000
+                </option>
+
+                <option [value]="15000">
+                  ₹15,000
+                </option>
+
+                <option [value]="20000">
+                  ₹20,000
+                </option>
+
+                <option [value]="30000">
+                  ₹30,000
+                </option>
+
+                <option [value]="40000">
+                  ₹40,000
+                </option>
+
+                <option [value]="50000">
+                  ₹50,000
+                </option>
+
+              </select>
+
+            </div>
+
+            <div class="filter-field">
+
+              <label for="maxStops">
+                Stops
+              </label>
+
+              <select
+                id="maxStops"
+                [value]="maxStops$.value"
+                (change)="onStopsChange($event)"
+              >
+
+                <option [value]="0">
+                  Non-stop
+                </option>
+
+                <option [value]="1">
+                  Up to 1 Stop
+                </option>
+
+                <option [value]="2">
+                  Up to 2 Stops
+                </option>
+
+              </select>
+
+            </div>
+
+            <div class="filter-field">
+
+              <label for="airline">
+                Airline
+              </label>
+
+              <select
+                id="airline"
+                [value]="selectedAirline$.value"
+                (change)="onAirlineChange($event)"
+              >
+
+                <option value="ALL">
+                  All Airlines
+                </option>
+
+                @for (
+                  airline of airlines$ | async;
+                  track airline
+                ) {
+
+                  <option [value]="airline">
+                    {{ airline }}
+                  </option>
+
+                }
+
+              </select>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+
+    }
+
+    @if (
+      filteredFlights$ | async;
+      as filteredFlights
+    ) {
+
+      @if (filteredFlights.length === 0) {
+
+        <div class="state-container empty-state">
+
+          <div class="state-icon">
+            ✈
+          </div>
+
+          <h3>
+            No flights found
+          </h3>
+
+          <p>
+            No flights match the selected filters.
+            Try adjusting your search criteria.
+          </p>
+
+        </div>
+
+      } @else {
+
+        <div class="results-summary">
+
+          <strong>
+            {{ filteredFlights.length }}
+          </strong>
+
+          {{
+            filteredFlights.length === 1
+              ? 'flight'
+              : 'flights'
+          }}
+
+          found
+
+        </div>
+
+        <div class="flight-list">
+
+          @for (
+            flight of filteredFlights;
+            track flight.id
+          ) {
+
+            <app-flight-card
+              [flight]="flight"
+              (viewDetails)="onViewDetails($event)"
+            />
+
+          }
+
+        </div>
+
+      }
+
+    }
+
+  }
+
+</section>

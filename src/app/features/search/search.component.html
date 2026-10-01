@@ -1,0 +1,297 @@
+<section class="search-section">
+
+  <div class="search-card">
+
+    <div class="search-header">
+
+      <div class="search-title">
+
+        <span class="search-icon">✈</span>
+
+        <div>
+          <h1>Find Your Flight</h1>
+
+          <p>
+            Search and compare available flights
+          </p>
+        </div>
+
+      </div>
+
+      <div class="trip-badge">
+        Round Trip
+      </div>
+
+    </div>
+
+    <form
+      [formGroup]="searchForm"
+      (ngSubmit)="onSearch()"
+      novalidate
+    >
+
+      <div class="search-form">
+
+        <!-- Route -->
+
+        <div class="route-section">
+
+          <div class="form-field route-field">
+
+            <label for="from">
+              From
+            </label>
+
+            <div class="field-wrapper">
+
+              <span class="field-icon">◉</span>
+
+              <select
+                id="from"
+                formControlName="from"
+              >
+
+                <option value="">
+                  Select departure
+                </option>
+
+                @for (
+                  airport of airports;
+                  track airport.code
+                ) {
+                  <option [value]="airport.code">
+                    {{ airport.code }} - {{ airport.name }}
+                  </option>
+                }
+
+              </select>
+
+            </div>
+
+            @if (
+              fromControl.invalid &&
+              fromControl.touched
+            ) {
+              <small class="error-message">
+                Please select a departure airport.
+              </small>
+            }
+
+          </div>
+
+          <button
+            type="button"
+            class="swap-button"
+            aria-label="Swap departure and arrival airports"
+            title="Swap airports"
+            (click)="swapLocations()"
+          >
+            ⇄
+          </button>
+
+          <div class="form-field route-field">
+
+            <label for="to">
+              To
+            </label>
+
+            <div class="field-wrapper">
+
+              <span class="field-icon">◉</span>
+
+              <select
+                id="to"
+                formControlName="to"
+              >
+
+                <option value="">
+                  Select arrival
+                </option>
+
+                @for (
+                  airport of airports;
+                  track airport.code
+                ) {
+                  <option [value]="airport.code">
+                    {{ airport.code }} - {{ airport.name }}
+                  </option>
+                }
+
+              </select>
+
+            </div>
+
+            @if (
+              toControl.invalid &&
+              toControl.touched
+            ) {
+              <small class="error-message">
+                Please select a valid arrival airport.
+              </small>
+            }
+
+          </div>
+
+        </div>
+
+        @if (
+          searchForm.hasError('sameAirport') &&
+          (fromControl.touched || toControl.touched)
+        ) {
+          <div class="form-level-error">
+            Departure and arrival airports must be different.
+          </div>
+        }
+
+        <!-- Date & Passenger -->
+
+        <div class="form-grid">
+
+          <div class="form-field">
+
+            <label for="departureDate">
+              Departure Date
+            </label>
+
+            <div class="field-wrapper">
+
+              <span class="field-icon">▣</span>
+
+              <input
+                id="departureDate"
+                type="date"
+                [min]="today"
+                formControlName="departureDate"
+              />
+
+            </div>
+
+            @if (
+              departureDateControl.invalid &&
+              departureDateControl.touched
+            ) {
+              <small class="error-message">
+                Please select a valid departure date.
+              </small>
+            }
+
+          </div>
+
+          <div class="form-field">
+
+            <label for="returnDate">
+              Return Date
+            </label>
+
+            <div class="field-wrapper">
+
+              <span class="field-icon">▣</span>
+
+              <input
+                id="returnDate"
+                type="date"
+                [min]="departureDateControl.value || today"
+                formControlName="returnDate"
+              />
+
+            </div>
+
+            @if (
+              returnDateControl.invalid &&
+              returnDateControl.touched
+            ) {
+              <small class="error-message">
+                Please select a valid return date.
+              </small>
+            }
+
+          </div>
+
+          <div class="form-field">
+
+            <label for="passengers">
+              Passengers
+            </label>
+
+            <div class="field-wrapper">
+
+              <span class="field-icon">♙</span>
+
+              <select
+                id="passengers"
+                formControlName="passengers"
+              >
+
+                @for (
+                  passenger of [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                  track passenger
+                ) {
+                  <option [value]="passenger">
+                    {{ passenger }}
+                    {{
+                      passenger === 1
+                        ? 'Passenger'
+                        : 'Passengers'
+                    }}
+                  </option>
+                }
+
+              </select>
+
+            </div>
+
+            @if (
+              passengersControl.invalid &&
+              passengersControl.touched
+            ) {
+              <small class="error-message">
+                Passengers must be between 1 and 9.
+              </small>
+            }
+
+          </div>
+
+        </div>
+
+        @if (
+          searchForm.hasError('departureInPast')
+        ) {
+          <div class="form-level-error">
+            Departure date cannot be in the past.
+          </div>
+        }
+
+        @if (
+          searchForm.hasError('returnBeforeDeparture')
+        ) {
+          <div class="form-level-error">
+            Return date cannot be before the departure date.
+          </div>
+        }
+
+        <!-- Search Action -->
+
+        <div class="search-action">
+
+          <div class="search-hint">
+            Search available flights
+          </div>
+
+          <button
+            type="submit"
+            class="search-button"
+            [disabled]="searchForm.invalid"
+          >
+            <span>Search Flights</span>
+            <span class="button-arrow">→</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</section>

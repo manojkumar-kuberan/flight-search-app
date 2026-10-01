@@ -1,0 +1,273 @@
+<section class="details-container">
+
+  <button
+    type="button"
+    class="back-button"
+    (click)="goBack()"
+  >
+    <span>←</span>
+    Back to Search
+  </button>
+
+  @if (loading) {
+
+    <div class="state-container">
+
+      <div class="spinner"></div>
+
+      <h3>
+        Loading flight details
+      </h3>
+
+      <p>
+        Please wait while we load the flight information.
+      </p>
+
+    </div>
+
+  }
+
+  @if (!loading && errorMessage) {
+
+    <div class="state-container error-state">
+
+      <div class="state-icon">
+        !
+      </div>
+
+      <h3>
+        Unable to load flight
+      </h3>
+
+      <p>
+        {{ errorMessage }}
+      </p>
+
+      <button
+        type="button"
+        class="primary-button"
+        (click)="goBack()"
+      >
+        Back to Search
+      </button>
+
+    </div>
+
+  }
+
+  @if (!loading && !errorMessage && flight) {
+
+    <div class="details-card">
+
+      <!-- Header -->
+
+      <div class="details-header">
+
+        <div class="airline-section">
+
+          <div class="airline-logo">
+            {{ flight.airline.charAt(0) }}
+          </div>
+
+          <div>
+
+            <span class="label">
+              Airline
+            </span>
+
+            <h1>
+              {{ flight.airline }}
+            </h1>
+
+            <p>
+              {{ flight.flightNumber }}
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="price-section">
+
+          <span>
+            Total Price
+          </span>
+
+          <strong>
+            ₹{{ flight.price | number }}
+          </strong>
+
+          <small>
+            per passenger
+          </small>
+
+        </div>
+
+      </div>
+
+      <!-- Journey -->
+
+      <div class="journey-section">
+
+        <div class="section-title">
+          Flight Journey
+        </div>
+
+        <div class="journey">
+
+          <div class="location">
+
+            <strong>
+              {{ flight.departure.time }}
+            </strong>
+
+            <span>
+              {{ flight.departure.airport }}
+            </span>
+
+            <small>
+              Departure
+            </small>
+
+          </div>
+
+          <div class="journey-line">
+
+            <span class="duration">
+              {{ flight.duration }}
+            </span>
+
+            <div class="line">
+
+              <span class="dot"></span>
+
+              <span class="connector"></span>
+
+              <span class="plane">
+                ✈
+              </span>
+
+              <span class="connector"></span>
+
+              <span class="dot"></span>
+
+            </div>
+
+            <span class="stops">
+
+              @if (flight.stops === 0) {
+
+                Non-stop
+
+              } @else {
+
+                {{ flight.stops }}
+                {{ flight.stops === 1 ? 'Stop' : 'Stops' }}
+
+              }
+
+            </span>
+
+          </div>
+
+          <div class="location arrival">
+
+            <strong>
+              {{ flight.arrival.time }}
+            </strong>
+
+            <span>
+              {{ flight.arrival.airport }}
+            </span>
+
+            <small>
+              Arrival
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Flight Information -->
+
+      <div class="information-section">
+
+        <div class="section-title">
+          Flight Information
+        </div>
+
+        <div class="information-grid">
+
+          <div class="information-item">
+
+            <span>
+              Flight Number
+            </span>
+
+            <strong>
+              {{ flight.flightNumber }}
+            </strong>
+
+          </div>
+
+          <div class="information-item">
+
+            <span>
+              Aircraft
+            </span>
+
+            <strong>
+              {{ flight.aircraft || 'Not specified' }}
+            </strong>
+
+          </div>
+
+          <div class="information-item">
+
+            <span>
+              Baggage
+            </span>
+
+            <strong>
+              {{ flight.baggage || 'Not specified' }}
+            </strong>
+
+          </div>
+
+          <div class="information-item">
+
+            <span>
+              Cabin Class
+            </span>
+
+            <strong>
+              {{ flight.cabinClass || 'Not specified' }}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Actions -->
+
+      <div class="details-footer">
+
+        <button
+          type="button"
+          class="secondary-button"
+          (click)="goBack()"
+        >
+          ← Search Another Flight
+        </button>
+
+      </div>
+
+    </div>
+
+  }
+
+</section>
